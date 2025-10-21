@@ -1,0 +1,1 @@
+# MY-STATIC-BLOG
