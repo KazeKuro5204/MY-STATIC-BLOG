@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fetch API trong JavaScript</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">My Dev Blog</a>
+      <a href="../blog.html" class="text-white">Blog</a>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h1>Fetch API trong JavaScript</h1>
+    <p><span class="badge bg-secondary">JavaScript</span> <span class="badge bg-warning">Frontend</span></p>
+    <div>
+        <p><strong>Fetch API</strong> là tiêu chuẩn hiện đại trong JavaScript để thực hiện các yêu cầu mạng (HTTP Requests). Nó thay thế cho <code>XMLHttpRequest</code> cũ và hoạt động dựa trên <strong>Promise</strong>, giúp xử lý bất đồng bộ gọn gàng hơn.</p>
+        
+        <h2 class="mt-4">1. Cú pháp Fetch cơ bản (GET)</h2>
+        <p>Phương thức <code>fetch()</code> nhận URL và trả về một Promise chứa đối tượng <code>Response</code>. Sau đó, ta dùng <code>.json()</code> để trích xuất dữ liệu.</p>
+        <div id="result" class="alert alert-info">Đang tải dữ liệu...</div>
+        <pre class="bg-dark text-white p-3 rounded"><code>
+fetch('https://jsonplaceholder.typicode.com/todos/1') 
+    .then(response => {
+        // Kiểm tra lỗi HTTP (ví dụ: 404, 500)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json(); // Trả về một Promise chứa dữ liệu JSON
+    })
+    .then(data => {
+        document.getElementById('result').innerHTML = 
+            `ID công việc: ${data.id}, Tiêu đề: ${data.title}`;
+        console.log("Dữ liệu đã nhận:", data);
+    })
+    .catch(error => {
+        document.getElementById('result').innerHTML = `Lỗi: ${error.message}`;
+        console.error('Fetch failed:', error);
+    });
+        </code></pre>
+
+        <h2 class="mt-4">2. Fetch với phương thức POST</h2>
+        <p>Để gửi dữ liệu (ví dụ: tạo mới), ta cần truyền vào đối số thứ hai, chỉ định <code>method</code>, <code>headers</code> và <code>body</code>.</p>
+        <pre class="bg-dark text-white p-3 rounded"><code>
+fetch('/api/posts', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        title: 'Bài viết mới',
+        content: 'Nội dung...'
+    })
+})
+.then(response => response.json())
+.then(newPost => console.log('Đã tạo:', newPost));
+        </code></pre>
+    </div>
+    <p class="mt-4"><a href="../blog.html">← Quay lại Blog</a></p>
+  </div>
+    <script>
+        // JS để chạy ví dụ (có thể gây lỗi CORS nếu không có API thật)
+        document.addEventListener('DOMContentLoaded', () => {
+             fetch('https://jsonplaceholder.typicode.com/todos/1') 
+                .then(response => {
+                    if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('result').innerHTML = 
+                        `ID công việc: ${data.id}, Tiêu đề: ${data.title}`;
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = `Lỗi: ${error.message}`;
+                });
+        });
+    </script>
+</body>
+</html>

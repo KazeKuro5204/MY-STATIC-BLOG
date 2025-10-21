@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lập trình socket trong Java</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">My Dev Blog</a>
+      <a href="../blog.html" class="text-white">Blog</a>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h1>Lập trình socket trong Java</h1>
+    <p><span class="badge bg-secondary">Java</span> <span class="badge bg-info">Mạng</span></p>
+    <div>
+        <p><strong>Socket</strong> là một khái niệm cơ bản trong lập trình mạng, nó đóng vai trò là điểm cuối (endpoint) của một kênh giao tiếp hai chiều giữa hai chương trình đang chạy trên các máy tính khác nhau. Java cung cấp gói <code>java.net</code> với các lớp <code>Socket</code> và <code>ServerSocket</code> để triển khai mô hình Client-Server.</p>
+        
+        <p class="fw-bold text-primary">Mô hình giao tiếp Socket TCP/IP:</p>
+        <ol>
+            <li><strong>Server</strong> tạo một <code>ServerSocket</code> và lắng nghe trên một cổng (port) cụ thể.</li>
+            <li><strong>Client</strong> tạo một <code>Socket</code> và cố gắng kết nối đến địa chỉ IP và cổng của Server.</li>
+            <li>Khi có kết nối thành công, <code>ServerSocket</code> của Server sẽ trả về một đối tượng <code>Socket</code> mới, thiết lập kênh giao tiếp hai chiều.</li>
+            <li>Cả Client và Server đều sử dụng luồng I/O (Input/Output Streams) để đọc và ghi dữ liệu qua Socket.</li>
+        </ol>
+
+        <h2 class="mt-4">Code Server (ServerSocket)</h2>
+        <p>Server phải khởi động trước và sẵn sàng chấp nhận kết nối.</p>
+        <pre class="bg-dark text-white p-3 rounded"><code>
+import java.io.*;
+import java.net.*;
+
+public class SimpleServer {
+    public static void main(String[] args) {
+        int port = 6666;
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Server đang chờ kết nối trên cổng " + port + "...");
+            
+            // 1. Chấp nhận kết nối từ Client
+            Socket clientSocket = serverSocket.accept(); 
+            System.out.println("Client đã kết nối: " + clientSocket.getInetAddress());
+
+            // 2. Thiết lập luồng Ghi/Đọc
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+            // 3. Trao đổi dữ liệu
+            out.println("Chào mừng bạn đến với Java Socket Server!");
+            String clientMessage = in.readLine();
+            System.out.println("Client gửi: " + clientMessage);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+        </code></pre>
+
+        <h2 class="mt-4">Code Client (Socket)</h2>
+        <p>Client chủ động kết nối đến Server đã biết địa chỉ và cổng.</p>
+        <pre class="bg-dark text-white p-3 rounded"><code>
+import java.io.*;
+import java.net.*;
+
+public class SimpleClient {
+    public static void main(String[] args) {
+        String serverAddress = "127.0.0.1"; // Localhost
+        int port = 6666;
+        try (Socket socket = new Socket(serverAddress, port)) {
+            System.out.println("Đã kết nối đến Server.");
+
+            // 1. Thiết lập luồng Ghi/Đọc
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+            // 2. Trao đổi dữ liệu
+            String serverMessage = in.readLine();
+            System.out.println("Server nói: " + serverMessage);
+
+            out.println("Tôi là Client!"); 
+
+        } catch (IOException e) {
+            System.err.println("Lỗi Client: " + e.getMessage());
+        }
+    }
+}
+        </code></pre>
+
+        <p class="mt-4">Sử dụng Socket là cách hiệu quả để xây dựng các ứng dụng mạng cơ bản như ứng dụng chat, truyền file, hoặc các hệ thống phân tán.</p>
+    </div>
+    <p class="mt-4"><a href="../blog.html">← Quay lại Blog</a></p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

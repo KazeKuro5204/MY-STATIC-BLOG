@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Blog - My Dev Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 1. Màu nền chính: Xanh dương tối (#0b2f5b) */
+        .main-bg {
+            background-color: #0b2f5b !important;
+        }
+        /* 2. Màu chữ mặc định: Trắng (#ffffff) */
+        .text-white-default {
+            color: #ffffff !important;
+        }
+        /* 3. Màu nền cho Card Bài Viết: Xanh dương đậm hơn (#051a33) */
+        .post-card-bg {
+            background-color: #051a33; 
+            border: 1px solid #144983; 
+        }
+        /* 4. Tùy chỉnh Đường Kẻ Ngang (HR) */
+        .card-divider {
+            border-top: 1px solid #1c5299; /* Màu xanh sáng nhẹ */
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 1; /* Đảm bảo nhìn rõ */
+        }
+        /* 5. Tùy chỉnh Nút Đọc Tiếp (Xanh nước sáng, chữ đen) */
+        .btn-bright-blue {
+            /* Màu nền xanh nước sáng */
+            background-color: #add8e6 !important; 
+            /* Màu chữ đen */
+            color: #000000 !important; 
+            /* Loại bỏ viền mặc định */
+            border-color: #add8e6 !important; 
+        }
+        .btn-bright-blue:hover {
+            background-color: #92c5d6 !important; /* Đậm hơn khi hover */
+            border-color: #92c5d6 !important;
+            color: #000000 !important;
+        }
+        /* Đảm bảo Badge Tag hiển thị rõ ràng */
+        .badge {
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body class="main-bg text-white-default">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">My Dev Blog</a>
+            <a href="blog.html" class="text-white">Blog</a>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <h2>📝 Danh sách bài viết</h2>
+        <div class="row mt-4">
+            
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">Lập trình socket trong Java</h5>
+                    <hr class="card-divider"> <p class="text-light">Hướng dẫn tạo socket server-client bằng Java.</p>
+                    <span class='badge bg-secondary'>Java</span><br><br>
+                    <a href='posts/lap-trinh-socket-trong-java.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+            
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">Giao tiếp TCP/IP với Server</h5>
+                    <hr class="card-divider"> <p class="text-light">Tổng quan TCP/IP và cách ứng dụng.</p>
+                    <span class='badge bg-secondary'>Java</span><br><br>
+                    <a href='posts/giao-tiep-tcp-ip.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">Đọc/Ghi file trong Java</h5>
+                    <hr class="card-divider"> <p class="text-light">Các phương pháp xử lý file trong Java.</p>
+                    <span class='badge bg-secondary'>Java</span><br><br>
+                    <a href='posts/doc-ghi-file-trong-java.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">Fetch API trong JavaScript</h5>
+                    <hr class="card-divider"> <p class="text-light">Sử dụng Fetch để gọi API.</p>
+                    <span class='badge bg-secondary'>JavaScript</span><br><br>
+                    <a href='posts/fetch-api-trong-js.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">Promise &amp; Async/Await</h5>
+                    <hr class="card-divider"> <p class="text-light">Quản lý bất đồng bộ trong JS.</p>
+                    <span class='badge bg-secondary'>JavaScript</span><br><br>
+                    <a href='posts/promise-async-await.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+            
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">Xử lý sự kiện trong DOM</h5>
+                    <hr class="card-divider"> <p class="text-light">Event handling cơ bản và nâng cao.</p>
+                    <span class='badge bg-secondary'>JavaScript</span><br><br>
+                    <a href='posts/xu-ly-su-kien-dom.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">Kết nối Backend &amp; Frontend</h5>
+                    <hr class="card-divider"> <p class="text-light">Cách kết nối REST API với frontend.</p>
+                    <span class='badge bg-secondary'>Fullstack</span><br><br>
+                    <a href='posts/ket-noi-backend-frontend.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">RESTful API là gì?</h5>
+                    <hr class="card-divider"> <p class="text-light">Nguyên tắc xây dựng RESTful.</p>
+                    <span class='badge bg-secondary'>Backend</span><br><br>
+                    <a href='posts/restful-api-la-gi.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+
+            <div class='col-md-4 mb-4'>
+                <div class='card p-3 h-100 shadow-sm post-card-bg'>
+                    <h5 class="text-white">Kinh nghiệm học lập trình mạng</h5>
+                    <hr class="card-divider"> <p class="text-light">Tips &amp; best practices khi học mạng.</p>
+                    <span class='badge bg-secondary'>General</span><br><br>
+                    <a href='posts/kinh-nghiem-hoc-lap-trinh-mang.html' class='btn btn-sm btn-bright-blue'>Đọc tiếp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

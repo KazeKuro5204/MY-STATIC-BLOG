@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RESTful API là gì?</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">My Dev Blog</a>
+      <a href="../blog.html" class="text-white">Blog</a>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h1>RESTful API là gì?</h1>
+    <p><span class="badge bg-secondary">API</span> <span class="badge bg-primary">Kiến trúc</span></p>
+    <div>
+        <p><strong>REST (Representational State Transfer)</strong> là một kiểu kiến trúc phần mềm, được Roy Fielding giới thiệu năm 2000, sử dụng giao thức HTTP làm giao diện trung chuyển. Một **RESTful API** là một Web API tuân thủ các nguyên tắc thiết kế REST.</p>
+        
+        <h2 class="mt-4">1. Các nguyên tắc cốt lõi</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Client-Server:</strong> Tách biệt giao diện người dùng và việc xử lý dữ liệu.</li>
+            <li class="list-group-item"><strong>Stateless (Không trạng thái):</strong> Server không lưu trữ bất kỳ dữ liệu phiên (session) nào của Client giữa các yêu cầu. Mỗi Request phải độc lập.</li>
+            <li class="list-group-item"><strong>Sử dụng Tài nguyên (Resource):</strong> Mọi thứ đều được coi là tài nguyên, được định danh bằng **URL** (ví dụ: <code>/users</code>, <code>/products/1</code>).</li>
+        </ul>
+
+        <h2 class="mt-4">2. Ánh xạ HTTP Methods (CRUD)</h2>
+        <p>RESTful API sử dụng các phương thức HTTP tiêu chuẩn để thao tác với tài nguyên:</p>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr><th>Method</th><th>Mục đích</th><th>Ví dụ URL</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>**GET**</td><td>Đọc/Truy xuất tài nguyên</td><td><code>/users/1</code></td></tr>
+                <tr><td>**POST**</td><td>Tạo mới một tài nguyên</td><td><code>/users</code></td></tr>
+                <tr><td>**PUT**</td><td>Cập nhật toàn bộ tài nguyên</td><td><code>/users/1</code></td></tr>
+                <tr><td>**DELETE**</td><td>Xóa một tài nguyên</td><td><code>/users/1</code></td></tr>
+            </tbody>
+        </table>
+        <p>Việc sử dụng các phương thức HTTP một cách nhất quán giúp API trở nên dễ hiểu, dễ sử dụng và dễ mở rộng.</p>
+    </div>
+    <p class="mt-4"><a href="../blog.html">← Quay lại Blog</a></p>
+  </div>
+</body>
+</html>
